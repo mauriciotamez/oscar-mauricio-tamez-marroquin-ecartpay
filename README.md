@@ -1,84 +1,106 @@
-# Turborepo starter
+# GPU E-commerce Platform
 
-This Turborepo starter is maintained by the Turborepo core team.
+A modern e-commerce platform built with Vue.js, NestJS, and MySQL in a monorepo architecture.
 
-## Using this example
+## 🚀 Tech Stack
 
-Run the following command:
+- **Frontend**: Vue 3 + TypeScript + Vite
+- **Backend**: NestJS + Prisma + MySQL
+- **Architecture**: Monorepo using Turborepo
+- **Containerization**: Docker & Docker Compose
+- **Type Safety**: TypeScript throughout the stack
 
-```sh
-npx create-turbo@latest
-```
+## 🛠️ Prerequisites
 
-## What's inside?
+- Docker and Docker Compose
+- Node.js >=22.13.1
+- npm >=10.2.4
 
-This Turborepo includes the following packages/apps:
+## 🏃‍♂️ Quick Start
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+1. Clone the repository:
 
 ```
-cd my-turborepo
-pnpm build
+git clone https://github.com/mauriciotamez/oscar-mauricio-tamez-marroquin-ecartpay.git
+```
+```
+cd ecartpay-monorepo
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
+3. Start the application:
 ```
-cd my-turborepo
-pnpm dev
+docker-compose up --build
 ```
 
-### Remote Caching
+4. Access the applications:
+- Frontend: http://localhost:3002
+- API: http://localhost:3000
+- API Documentation: http://localhost:3000/api
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## 📁 Project Structure
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+    
+    |── apps/                  
+    |   |── web/           # Vue.js frontend
+    |   |── api/           # NestJS backend
+    |── packages/          # Shared packages                    
+    |── docker-compose.yml # Docker composition                     
+    |── package.json       # root package.json
+    |── turbo.json         # turbo monorepo config
+    └── README.md
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
 
+## 🗄️ Database
+
+The database structure is automatically created and seeded when running `docker-compose up`. The process includes:
+
+1. Prisma migrations
+2. Initial seed data for:
+   - Product catalog
+   - User accounts
+   - Access tokens
+
+## 🔑 Authentication
+
+For testing purposes, use the following token:
+Bearer admin_token_123
+
+## 🧪 Testing
+
+Run frontend tests
 ```
-cd my-turborepo
-npx turbo login
+cd apps/web
+```
+```
+npm run test:unit
+```
+Run backend tests
+```
+cd apps/api
+```
+```
+npm run test
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## 🛠️ Development
 
+To develop locally:
+
+1. Start the containers:
 ```
-npx turbo link
+docker-compose up
 ```
 
-## Useful Links
 
-Learn more about the power of Turborepo:
+2. The development servers will start with hot-reload enabled:
+   - Frontend changes will reflect immediately
+   - Backend changes will trigger automatic restart
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## 📝 API Documentation
+
+API documentation is available at http://localhost:3000/api when the server is running.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details
