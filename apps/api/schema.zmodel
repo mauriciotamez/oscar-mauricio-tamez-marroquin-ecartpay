@@ -1,0 +1,44 @@
+datasource db {
+    provider = "mysql"
+    url = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id String @id() @default(uuid())
+    name String
+    phone String
+    img_profile String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt()
+}
+
+model CatalogProduct {
+    id          String   @id() @default(uuid())
+    name        String
+    description String
+    height      Float
+    length      Float
+    width       Float
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt()
+    images      Image[]  
+}
+
+model Image {
+    id              String   @id() @default(uuid())
+    url             String   
+    catalogProductId String  
+    catalogProduct  CatalogProduct @relation(fields: [catalogProductId], references: [id])
+}
+
+model AccessToken {
+    id String @id() @default(uuid())
+    user_id String
+    token String @unique()
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt()
+}
