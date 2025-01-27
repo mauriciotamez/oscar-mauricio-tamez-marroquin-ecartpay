@@ -36,8 +36,7 @@ export class FilesService {
     const command = new PutObjectCommand(params);
     await this.s3.send(command);
 
-    // Construct the URL for the uploaded file
-    return `${process.env.R2_ENDPOINT}/${this.bucketName}/${folder}/${file.originalname}`;
+    return `${process.env.R2_ENDPOINT_PUBLIC}/${this.bucketName}/${folder}/${file.originalname}`;
   }
 
   async deleteFile(folder: string, fileName: string) {

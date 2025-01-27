@@ -102,10 +102,16 @@ export class ShippingService {
           company: "GPU World"
         },
         destination: {
-          ...data.destination,
+          name: data.destination.name,
+          email: data.destination.email,
+          phone: data.destination.phone,
+          street: data.destination.street,
+          number: data.destination.number,
+          city: data.destination.city,
           state: data.destination.state.substring(0, 2).toUpperCase(),
           country: "MX",
-          company: data.destination.company || "N/A"
+          postalCode: data.destination.postalCode,
+          company: "N/A"
         },
         packages: [{
           content: data.packages[0].content,
