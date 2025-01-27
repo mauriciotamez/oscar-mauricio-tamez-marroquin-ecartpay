@@ -17,15 +17,18 @@ model User {
 }
 
 model CatalogProduct {
-    id          String   @id() @default(uuid())
-    name        String
-    description String
-    height      Float
-    length      Float
-    width       Float
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt()
-    images      Image[]  
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  height      Int
+  length      Int
+  width       Int
+  brand       String
+  tier        String
+  price       Int     
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      Image[]
 }
 
 model Image {
