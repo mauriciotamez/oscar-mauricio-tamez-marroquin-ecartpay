@@ -33,8 +33,8 @@
         <div class="price-tag">
           <span class="price">${{ formatPrice(product.price) }} MXN</span>
           <button class="buy-button" @click="handleBuyNowClick">
-            Buy Now
-            <span class="arrow" :class="{ 'arrow-up': showShippingForm }">▼</span>
+            <span class="buy-text">Buy Now</span>
+            <img :src="cartIcon" alt="Cart" class="cart-icon">
           </button>
         </div>
       </div>
@@ -190,6 +190,7 @@ import type {
   ShippingLabel,
   ShippingInfo
 } from '@/types/shipping';
+import cartIcon from '@/assets/cart.png'
 
 interface Image {
   url: string;
@@ -505,9 +506,10 @@ h1 {
 }
 
 .buy-button {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -517,18 +519,24 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  min-width: 200px;
+}
+
+.buy-text {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(1) brightness(100);
+  position: absolute;
+  right: 2rem;
 }
 
 .buy-button:hover {
   background-color: #45a049;
-}
-
-.arrow {
-  transition: transform 0.3s ease;
-}
-
-.arrow-up {
-  transform: rotate(180deg);
 }
 
 .shipping-section {
@@ -538,7 +546,6 @@ h1 {
   border-radius: 8px;
   padding: 1.5rem;
   margin-top: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
 
