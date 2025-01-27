@@ -6,16 +6,6 @@ import { ShippingQuoteRequestDto, ShippingLabelRequestDto } from './dto/shipping
 export class ShippingController {
   constructor(private readonly shippingService: ShippingService) {}
 
- /* @Get('carriers')
-  async getAvailableCarriers(
-    @Query('countryCode') countryCode: string = 'MX',
-    @Query('international') international: number = 0
-  ) {
-    return this.shippingService.getAvailableCarriers(countryCode, international);
-  }
-
-  */
-
   @Post('quote')
   async getQuote(@Body() quoteRequest: ShippingQuoteRequestDto) {
     return this.shippingService.getQuote(quoteRequest);
