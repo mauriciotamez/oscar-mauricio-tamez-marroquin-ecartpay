@@ -1,11 +1,13 @@
-# GPU E-commerce Platform
+# GPU World E-commerce Platform
 
 A modern e-commerce platform built with Vue.js, NestJS, and MySQL in a monorepo architecture.
+   
+   - With love, Mauricio 🖤
 
 ## 🚀 Tech Stack
 
 - **Frontend**: Vue 3 + TypeScript + Vite
-- **Backend**: NestJS + Prisma + MySQL
+- **Backend**: NestJS + Prisma + MySQL🖤
 - **Architecture**: Monorepo using Turborepo
 - **Containerization**: Docker & Docker Compose
 - **Type Safety**: TypeScript throughout the stack
@@ -24,7 +26,7 @@ A modern e-commerce platform built with Vue.js, NestJS, and MySQL in a monorepo 
 git clone https://github.com/mauriciotamez/oscar-mauricio-tamez-marroquin-ecartpay.git
 ```
 ```
-cd ecartpay-monorepo
+cd oscar-mauricio-tamez-marroquin-ecartpay
 ```
 
 3. Start the application:
@@ -56,32 +58,16 @@ The database structure is automatically created and seeded when running `docker-
 
 1. Prisma migrations
 2. Initial seed data for:
-   - Product catalog
+   - Product catalog and images
    - User accounts
    - Access tokens
 
 ## 🔑 Authentication
 
-For testing purposes, use the following token:
+For testing purposes, use the following token to create/modify and upload images to the product module:
+```
 Bearer admin_token_123
-
-## 🧪 Testing
-
-Run frontend tests
 ```
-cd apps/web
-```
-```
-npm run test:unit
-```
-Run backend tests
-```
-cd apps/api
-```
-```
-npm run test
-```
-
 
 ## 🛠️ Development
 
