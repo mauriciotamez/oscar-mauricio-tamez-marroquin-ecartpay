@@ -288,7 +288,10 @@ const calculateShipping = async () => {
         'Accept': 'application/json',
       },
       body: JSON.stringify({
-        destination: shippingInfo,
+        destination: {
+          ...shippingInfo,
+          country: 'MX'
+        },
         packages: [{
           content: product.value.name,
           amount: 1,
