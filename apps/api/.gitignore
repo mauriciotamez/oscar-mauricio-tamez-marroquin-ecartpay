@@ -36,7 +36,10 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # dotenv environment variable files
-.env
+# .env should be in git ignore, so no .env goes to github, for purposes of
+# this test, we are uploading the .env so managers testing the solution run it
+# it right away and avoid further configurations
+#.env
 .env.development.local
 .env.test.local
 .env.production.local
