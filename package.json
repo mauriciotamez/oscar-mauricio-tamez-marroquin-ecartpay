@@ -5,12 +5,15 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "docker:rebuild": "docker-compose down && docker-compose down -v && docker-compose build --no-cache && docker-compose up",
+    "docker:build": "docker compose up"
   },
   "devDependencies": {
     "prettier": "^3.4.2",
     "turbo": "^2.3.4",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "wrangler": "^3.105.1"
   },
   "engines": {
     "node": ">=18"
@@ -19,5 +22,7 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+  }
 }
