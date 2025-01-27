@@ -50,8 +50,7 @@ export class ProductsController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   @UseGuards(AuthGuard)
   @Post()
-  @UsePipes(new JoiValidationPipe(CreateProductSchema))
-  create(@Body() createProductDto: CreateProductDto): Promise<any> {
+  create(@Body(new JoiValidationPipe(CreateProductSchema)) createProductDto: CreateProductDto): Promise<any> {
     return this.productsService.create(createProductDto);
   }
 
@@ -62,10 +61,9 @@ export class ProductsController {
   @ApiResponse({ status: 404, description: 'Product not found' })
   @UseGuards(AuthGuard)
   @Patch(':id')
-  @UsePipes(new JoiValidationPipe(UpdateProductSchema))
   update(
     @Param('id') id: string,
-    @Body() updateProductDto: UpdateProductDto,
+    @Body(new JoiValidationPipe(UpdateProductSchema)) updateProductDto: UpdateProductDto,
   ): Promise<any> {
     return this.productsService.update(id, updateProductDto);
   }

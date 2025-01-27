@@ -21,7 +21,7 @@ export const UpdateProductSchema = Joi.object({
   brand: Joi.string().valid('NVIDIA', 'AMD').optional(),
   tier: Joi.string().valid('high-end', 'mid-end', 'low-end').optional(),
   price: Joi.number().positive().optional()
-});
+}).min(1);
 
 export class CreateProductDto {
   @ApiProperty({ example: 'NVIDIA GeForce RTX 4090', description: 'The name of the product' })
@@ -49,7 +49,23 @@ export class CreateProductDto {
   price: number;
 }
 
-export class UpdateProductDto extends CreateProductDto {}
+
+
+export class UpdateProductDto {
+  id?: string;
+  name?: string;
+  description?: string;
+  height?: number;
+  length?: number;
+  width?: number;
+  brand?: string;
+  tier?: string;
+  price?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  images?: { url: string }[];
+}
+
 
 export class ProductResponseDto {
   id: string;

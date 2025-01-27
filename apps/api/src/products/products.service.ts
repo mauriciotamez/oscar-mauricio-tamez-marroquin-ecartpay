@@ -95,9 +95,12 @@ export class ProductsService {
 
   async update(id: string, data: UpdateProductDto) {
     await this.findOne(id);
+    
+    const { images, ...updateData } = data;
+    
     return this.prisma.catalogProduct.update({
       where: { id },
-      data,
+      data: updateData,
       include: {
         images: {
           select: {
