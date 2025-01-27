@@ -4,32 +4,28 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private jwtService: JwtService) {}
+  private prisma = new PrismaClient();
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
-    const authHeader = request.headers.authorization;
+    const token = request.headers.authorization?.split(' ')[1];
 
-    if (!authHeader) {
+    if (!token) {
       throw new UnauthorizedException('No token provided');
     }
 
-    const [type, token] = authHeader.split(' ');
-    
-    if (type !== 'Bearer') {
-      throw new UnauthorizedException('Invalid token type');
-    }
+    const accessToken = await this.prisma.accessToken.findUnique({
+      where: { token },
+    });
 
-    try {
-      const payload = await this.jwtService.verifyAsync(token);
-      request['user'] = payload;
-      return true;
-    } catch {
+    if (!accessToken) {
       throw new UnauthorizedException('Invalid token');
     }
+
+    return true;
   }
 }

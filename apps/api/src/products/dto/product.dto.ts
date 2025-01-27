@@ -1,4 +1,5 @@
 import * as Joi from 'joi';
+import { ApiProperty } from '@nestjs/swagger';
 
 export const CreateProductSchema = Joi.object({
   name: Joi.string().required(),
@@ -23,28 +24,32 @@ export const UpdateProductSchema = Joi.object({
 });
 
 export class CreateProductDto {
+  @ApiProperty({ example: 'NVIDIA GeForce RTX 4090', description: 'The name of the product' })
   name: string;
+
+  @ApiProperty({ example: 'High-end graphics card with ray tracing', description: 'Product description' })
   description: string;
-  img_product: string[];
+
+  @ApiProperty({ example: 14, description: 'Height in centimeters' })
   height: number;
+
+  @ApiProperty({ example: 304, description: 'Length in millimeters' })
   length: number;
+
+  @ApiProperty({ example: 137, description: 'Width in millimeters' })
   width: number;
+
+  @ApiProperty({ example: 'NVIDIA', description: 'Brand name' })
   brand: string;
+
+  @ApiProperty({ example: 'high-end', enum: ['high-end', 'mid-range', 'low-end'] })
   tier: string;
+
+  @ApiProperty({ example: 19999, description: 'Price in cents' })
   price: number;
 }
 
-export class UpdateProductDto {
-  name?: string;
-  description?: string;
-  img_product?: string[];
-  height?: number;
-  length?: number;
-  width?: number;
-  brand?: string;
-  tier?: string;
-  price?: number;
-}
+export class UpdateProductDto extends CreateProductDto {}
 
 export class ProductResponseDto {
   id: string;

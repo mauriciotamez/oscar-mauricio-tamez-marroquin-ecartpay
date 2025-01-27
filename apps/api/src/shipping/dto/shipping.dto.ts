@@ -1,15 +1,27 @@
+import { ApiProperty } from '@nestjs/swagger';
+
 // Base address structure
 export class AddressDto {
+  @ApiProperty()
   name: string;
   company?: string;
+  @ApiProperty()
   email: string;
+  @ApiProperty()
   phone: string;
+  @ApiProperty()
   street: string;
+  @ApiProperty()
   number: string;
-  district?: string;
+  @ApiProperty()
+  district: string;
+  @ApiProperty()
   city: string;
+  @ApiProperty()
   state: string;
+  @ApiProperty()
   country: string;
+  @ApiProperty()
   postalCode: string;
   reference?: string;
   coordinates?: {
@@ -50,9 +62,24 @@ export class ShippingSettingsDto {
 
 // Main quote request
 export class ShippingQuoteRequestDto {
+  @ApiProperty({ type: AddressDto })
   origin: AddressDto;
+  @ApiProperty({ type: AddressDto })
   destination: AddressDto;
-  packages: PackageDto[];
+  @ApiProperty({
+    example: [{
+      content: 'GPU',
+      amount: 1,
+      type: 'box',
+      dimensions: {
+        length: 20,
+        width: 15,
+        height: 10
+      },
+      weight: 2
+    }]
+  })
+  packages: any[];
   shipment: {
     carrier: string;
     service: string;
