@@ -63,6 +63,37 @@ onMounted(() => {
         <slot></slot>
       </main>
     </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>GPU World</h3>
+          <p>Your trusted source for graphics cards and gaming hardware.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <router-link to="/">Home</router-link>
+          <router-link to="/products">Products</router-link>
+          <router-link to="/about">About</router-link>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: contact@gpuworld.com</p>
+          <p>Phone: +52 811-999-2064</p>
+          <p>Address: Monterrey, NL, Mexico</p>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 GPU World. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -92,7 +123,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 90px;
+  border-radius: 14px;
   margin: 16px 0;
   flex-wrap: wrap;
   gap: 1rem;
@@ -202,7 +233,7 @@ onMounted(() => {
 @media (max-width: 768px) {
   .navbar {
     padding: 0.75rem 1rem;
-    border-radius: 45px;
+    border-radius: 14px;
   }
 
   .nav-links {
@@ -218,7 +249,7 @@ onMounted(() => {
 @media (max-width: 480px) {
   .navbar {
     justify-content: space-between;
-    border-radius: 24px;
+    border-radius: 14px;
   }
 
   .nav-links {
@@ -263,5 +294,82 @@ onMounted(() => {
   width: 24px;
   height: 24px;
   object-fit: contain;
+}
+
+.footer {
+  background-color: var(--nav-bg);
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 0 1rem 0;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.footer-section h3,
+.footer-section h4,
+.footer-section p,
+.footer-section a {
+  color: var(--text-color);
+}
+
+.footer-section a {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer-section a:hover {
+  opacity: 1;
+  color: var(--hover-color);
+}
+
+.layout:not(.dark) .footer-section h3,
+.layout:not(.dark) .footer-section p:first-of-type {
+  color: var(--text-color);
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
 }
 </style>

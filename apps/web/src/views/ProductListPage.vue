@@ -1,7 +1,7 @@
 <template>
   <div class="product-page">
     <div class="header">
-      <h1>All Products</h1>
+      <h1>All GPU's</h1>
       <ProductFilters @filter="handleFilters" />
     </div>
     <div class="product-content">
