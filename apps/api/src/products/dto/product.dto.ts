@@ -6,6 +6,9 @@ export const CreateProductSchema = Joi.object({
   height: Joi.number().positive().required(),
   length: Joi.number().positive().required(),
   width: Joi.number().positive().required(),
+  brand: Joi.string().valid('NVIDIA', 'AMD').required(),
+  tier: Joi.string().valid('high-end', 'mid-end', 'low-end').required(),
+  price: Joi.number().positive().required()
 });
 
 export const UpdateProductSchema = Joi.object({
@@ -14,6 +17,9 @@ export const UpdateProductSchema = Joi.object({
   height: Joi.number().positive().optional(),
   length: Joi.number().positive().optional(),
   width: Joi.number().positive().optional(),
+  brand: Joi.string().valid('NVIDIA', 'AMD').optional(),
+  tier: Joi.string().valid('high-end', 'mid-end', 'low-end').optional(),
+  price: Joi.number().positive().optional()
 });
 
 export class CreateProductDto {
@@ -23,6 +29,9 @@ export class CreateProductDto {
   height: number;
   length: number;
   width: number;
+  brand: string;
+  tier: string;
+  price: number;
 }
 
 export class UpdateProductDto {
@@ -32,6 +41,9 @@ export class UpdateProductDto {
   height?: number;
   length?: number;
   width?: number;
+  brand?: string;
+  tier?: string;
+  price?: number;
 }
 
 export class ProductResponseDto {
@@ -41,6 +53,9 @@ export class ProductResponseDto {
   height: number;
   length: number;
   width: number;
+  brand: string;
+  tier: string;
+  price: number;
   createdAt: Date;
   updatedAt: Date;
   images: { url: string }[];

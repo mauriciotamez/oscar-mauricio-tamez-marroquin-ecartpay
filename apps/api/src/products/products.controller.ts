@@ -20,7 +20,6 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { JoiValidationPipe } from 'src/pipes/joi-validation.pipe';
 
 @Controller('products')
-@UseGuards(AuthGuard)
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
@@ -34,12 +33,14 @@ export class ProductsController {
     return this.productsService.findOne(id);
   }
 
+  @UseGuards(AuthGuard)
   @Post()
   @UsePipes(new JoiValidationPipe(CreateProductSchema))
   create(@Body() createProductDto: CreateProductDto): Promise<any> {
     return this.productsService.create(createProductDto);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @UsePipes(new JoiValidationPipe(UpdateProductSchema))
   update(
@@ -49,6 +50,7 @@ export class ProductsController {
     return this.productsService.update(id, updateProductDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<any> {
     return this.productsService.remove(id);
