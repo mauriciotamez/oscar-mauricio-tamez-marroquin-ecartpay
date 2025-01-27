@@ -25,7 +25,7 @@
 
       <button type="submit" class="login-button">Login</button>
 
-      <p v-if="error" class="error-message">{{ error }}</p>
+      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
     </form>
   </div>
 </template>
@@ -37,7 +37,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const username = ref('');
 const password = ref('');
-const error = ref('');
+const errorMessage = ref('');
 
 const handleLogin = async () => {
   try {
@@ -53,7 +53,7 @@ const handleLogin = async () => {
     });
 
     if (!response.ok) {
-      error.value = 'Invalid credentials';
+      errorMessage.value = 'Invalid credentials';
       return;
     }
 
@@ -61,9 +61,9 @@ const handleLogin = async () => {
     localStorage.setItem('isAdminAuthenticated', 'true');
     localStorage.setItem('adminToken', data.token);
     router.push('/admin');
-  } catch (error) {
-    console.error('Login error:', error);
-    error.value = 'Login failed';
+  } catch (err) {
+    console.error('Login error:', err);
+    errorMessage.value = 'Login failed';
   }
 };
 </script>

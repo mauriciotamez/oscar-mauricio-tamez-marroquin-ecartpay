@@ -20,15 +20,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  brand: string;
-  tier: string;
-  price: number;
-}
+import type { Product } from '@/types/shipping';
 
 const products = ref<Product[]>([]);
 const router = useRouter();
